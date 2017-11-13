@@ -8,13 +8,11 @@ import {Observable} from 'rxjs/Observable';
 export class SessionService {
   currentVisitor: CustomerVisit;
   refresh: Observable<number>;
-  showAgenda: boolean;
 
   constructor(private scheduleService: ScheduleDataService) {
     this.reloadData();
-    this.showAgenda = false;
     this.currentVisitor = new CustomerVisit();
-    this.refresh = timer(100, 120000);
+    this.refresh = timer(100, 20000);
     this.refresh.subscribe(() => this.reloadData());
   }
 
@@ -24,6 +22,7 @@ export class SessionService {
 
   setCurrentVisitor() {
     const currentVisitors = this.scheduleService.getVisitorsForRange(new Date(Date.now()), new Date(Date.now()));
+    this.currentVisitor = new CustomerVisit();
     // assume there is only one visitor at a time
     currentVisitors.subscribe(visitors => {
       visitors.forEach(v => {

@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import {SessionService} from '../session.service';
-import {Router} from '@angular/router';
 
 
 @Component({
@@ -12,8 +11,7 @@ import {Router} from '@angular/router';
 export class WelcomeComponent implements OnInit {
   welcomeMessage: string;
 
-  constructor(private session: SessionService,
-              private router: Router) { }
+  constructor(private session: SessionService) { }
 
   ngOnInit() {
     this.welcomeMessage = '';

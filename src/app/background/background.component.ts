@@ -19,7 +19,6 @@ export class BackgroundComponent implements OnInit {
               private session: SessionService) { }
 
   ngOnInit() {
-    this.backgroundImage = defaultBackgroundImage;
     this.reloadData();
     this.session.refresh.subscribe(() => this.reloadData());
   }
@@ -27,6 +26,8 @@ export class BackgroundComponent implements OnInit {
   reloadData() {
     if (this.session.currentVisitor && this.session.currentVisitor.customer_industry !== undefined) {
       this.backgroundImage = imageDir + this.session.currentVisitor.customer_industry + '.jpg';
+    } else {
+      this.backgroundImage = defaultBackgroundImage;
     }
   }
 
