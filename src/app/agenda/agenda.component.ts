@@ -25,9 +25,11 @@ export class AgendaComponent implements OnInit {
     this.session.getCurrentVisitorEvents().subscribe(
       (events) => {
         events.forEach( event => {
-          // don't get events that have already ended
-          const eventEnd = new Date(Date.parse(event.event_end));
+          // javascript is kind of quirky, even though I have type casted the json data
+          // to a VisitEvent, it is still a string even though that shouldn't be possible...
+          const eventEnd = new Date(event.event_end);
           const now = new Date(Date.now());
+          // don't get events that have already ended
           if (now < eventEnd) {
             const e = new VisitEvent();
             e.copyInto(event);
