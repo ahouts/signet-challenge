@@ -12,7 +12,7 @@ npm install
 vi src/app/schedule-data.service.ts
 ng serve
 ```
-It should say "Welcome to the Executive Briefing Center" since the schedule data is all out of date
+It should say "Welcome to the Executive Briefing Center" since the schedule data is out of date.
 You could modify the schedule data to have current times and restart the backend if you want to see it in action.
 You could also modify your system time but I wouldn't recommend that.
 
