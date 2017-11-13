@@ -1,8 +1,20 @@
 # SignetChallenge
 
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.0.
+
 There would normally be tests, but I had to learn angular for this project which has taken a good part of my weekend.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.0.
+## basic setup
+```bash
+npm install
+# edit private schedule_data_url = 'https://scb.ahouts.com'; 
+# to whatever backend you want, eg: 'http://localhost:8000'
+vi src/app/schedule-data.service.ts
+ng serve
+```
+It should say "Welcome to the Executive Briefing Center" since the schedule data is all out of date
+You could modify the schedule data to have current times and restart the backend if you want to see it in action.
+You could also modify your system time but I wouldn't recommend that.
 
 ## Development server
 
