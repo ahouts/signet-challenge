@@ -1,0 +1,10 @@
+<app-background>
+  <div class="center">
+    <div class="center-body">
+      <h1 style="width: 97%;">{{welcomeMessage}}</h1>
+    </div>
+    <div *ngIf="session.currentVisitor.visit_id !== undefined">
+      <button class="agenda-button" (click)="this.router.navigate(['/agenda'])">Show Agenda</button>
+    </div>
+  </div>
+</app-background>

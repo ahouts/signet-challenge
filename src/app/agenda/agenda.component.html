@@ -1,0 +1,18 @@
+<app-background>
+  <div class="center">
+    <div class="center-body">
+      <h2>Agenda</h2>
+      <hr style="height: 0.3em; background-color: white;">
+      <div *ngIf="agendaItems.length === 0">
+        <h3>No items on the agenda.</h3>
+      </div>
+      <table style="width: 100%;">
+        <tr *ngFor="let item of agendaItems">
+          <th>{{item.event}}</th>
+          <th>{{item.event_start.toLocaleTimeString()}}</th>
+        </tr>
+      </table>
+    </div>
+    <button class="agenda-button" (click)="this.router.navigate(['/welcome'])">Back</button>
+  </div>
+</app-background>
