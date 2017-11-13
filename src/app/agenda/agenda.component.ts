@@ -25,8 +25,8 @@ export class AgendaComponent implements OnInit {
     this.session.getCurrentVisitorEvents().subscribe(
       (events) => {
         events.forEach( event => {
-          // dont get events that have already ended
-          const eventEnd = event.event_end;
+          // don't get events that have already ended
+          const eventEnd = new Date(Date.parse(event.event_end));
           const now = new Date(Date.now());
           if (now < eventEnd) {
             const e = new VisitEvent();

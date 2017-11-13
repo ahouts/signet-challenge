@@ -35,7 +35,7 @@ export class ScheduleDataService {
       id = -1;
     }
     const url = this.schedule_data_url + '/schedule/visitor/' + id.toString() + '/agenda';
-    return this.http.get<VisitEvent[]>(this.schedule_data_url + '/schedule/visitor/' + id.toString() + '/agenda');
+    return this.http.get<VisitEvent[]>(url);
   }
 
   getEvents(): Observable<VisitEvent[]> {
