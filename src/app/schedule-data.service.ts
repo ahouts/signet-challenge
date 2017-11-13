@@ -1,25 +1,25 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { CustomerVisit, VisitEvent } from './schedule-data';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient} from '@angular/common/http';
 
 // replace this with an interface to a real backend
 @Injectable()
 export class ScheduleDataService {
 
   // change this to http://localhost:8000 if you are running a local instance of the backend
-  private schedule_data_url = 'https://scb.ahouts.com';
+  private schedule_data_url = 'http://localhost:8000';
 
   constructor(private http: HttpClient) { }
 
-  getVisitors(): Observable<CustomerVisit> {
-    return this.http.get<CustomerVisit>(this.schedule_data_url + '/schedule/visitor');
+  getVisitors(): Observable<CustomerVisit[]> {
+    return this.http.get<CustomerVisit[]>(this.schedule_data_url + '/schedule/visitor');
   }
 
-  getVisitorsForRange(start: Date, end: Date): Observable<CustomerVisit> {
+  getVisitorsForRange(start: Date, end: Date): Observable<CustomerVisit[]> {
     const url = this.schedule_data_url + '/schedule/visitor?start_date=' +
       start.toISOString() + '&end_date=' + end.toISOString();
-    return this.http.get<CustomerVisit>(url);
+    return this.http.get<CustomerVisit[]>(url);
   }
 
   getVisitor(id: number): Observable<CustomerVisit> {
@@ -34,11 +34,12 @@ export class ScheduleDataService {
     if (typeof id === 'undefined') {
       id = -1;
     }
+    const url = this.schedule_data_url + '/schedule/visitor/' + id.toString() + '/agenda';
     return this.http.get<VisitEvent[]>(this.schedule_data_url + '/schedule/visitor/' + id.toString() + '/agenda');
   }
 
-  getEvents(): Observable<VisitEvent> {
-    return this.http.get<VisitEvent>(this.schedule_data_url + '/schedule/event');
+  getEvents(): Observable<VisitEvent[]> {
+    return this.http.get<VisitEvent[]>(this.schedule_data_url + '/schedule/event');
   }
 
   getEvent(id: number): Observable<VisitEvent> {

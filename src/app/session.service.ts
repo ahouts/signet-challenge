@@ -24,9 +24,12 @@ export class SessionService {
 
   setCurrentVisitor() {
     const currentVisitors = this.scheduleService.getVisitorsForRange(new Date(Date.now()), new Date(Date.now()));
+    console.log(new Date(Date.now()));
     // assume there is only one visitor at a time
-    currentVisitors.subscribe(v => {
-      this.currentVisitor.copyInto(v);
+    currentVisitors.subscribe(visitors => {
+      visitors.forEach(v => {
+        this.currentVisitor.copyInto(v);
+      });
     });
     return this.currentVisitor;
   }
