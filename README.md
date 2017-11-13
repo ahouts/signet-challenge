@@ -1,5 +1,7 @@
 # SignetChallenge
 
+There would normally be tests, but I had to learn angular for this project which has taken a good part of my weekend.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.0.
 
 ## Development server
